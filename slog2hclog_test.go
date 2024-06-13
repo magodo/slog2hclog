@@ -10,24 +10,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type bufferingBuffer struct {
-	held    bytes.Buffer
-	flushed bytes.Buffer
-}
-
-func (b *bufferingBuffer) Write(p []byte) (int, error) {
-	return b.held.Write(p)
-}
-
-func (b *bufferingBuffer) String() string {
-	return b.flushed.String()
-}
-
-func (b *bufferingBuffer) Flush() error {
-	_, err := b.flushed.WriteString(b.held.String())
-	return err
-}
-
 func TestLogger(t *testing.T) {
 	newSimple := func(level slog.Leveler, buf *bytes.Buffer) hclog.Logger {
 		var lvar *slog.LevelVar = nil
