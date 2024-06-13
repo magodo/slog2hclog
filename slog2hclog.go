@@ -60,7 +60,7 @@ var levelMapFromSlog = map[slog.Level]hclog.Level{
 }
 
 // New wraps a slog.Logger to a hclog.Logger.
-// hclog.Logger has the "Trace" level (SlogLevelTrace), which equals to the slog.LevelDebug - 4.
+// The `SetLevel` method only works when the `lvar` is specified and set to the slog.Logger.
 func New(l *slog.Logger, lvar *slog.LevelVar) hclog.Logger {
 	return &stdslogWrapper{
 		slog:    l,
