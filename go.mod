@@ -1,6 +1,6 @@
 module github.com/magodo/slog2hclog
 
-go 1.22.1
+go 1.21
 
 require (
 	github.com/hashicorp/go-hclog v1.6.3
